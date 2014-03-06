@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.world.WorldUnloadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.ase34.flyingblocksapi.commands.ExamplesCommandExecutor;
 import de.ase34.flyingblocksapi.commands.RemoveAllCommandExecutor;
 import de.ase34.flyingblocksapi.entities.CustomFallingBlock;
 import de.ase34.flyingblocksapi.entities.CustomHorse;
@@ -22,16 +23,17 @@ import de.ase34.flyingblocksapi.util.EntityRegistrator;
 public class FlyingBlocksPlugin extends JavaPlugin implements Listener {
 
     @Override
-    public void onDisable() {
+    public void onEnable() {
         EntityRegistrator.registerCustomEntity(CustomFallingBlock.class, "fba.fallingblock", 21);
         EntityRegistrator.registerCustomEntity(CustomHorse.class, "fba.horse", 100);
         EntityRegistrator.registerCustomEntity(CustomWitherSkull.class, "fba.witherskull", 19);
 
         getCommand("flyingblocks-removeall").setExecutor(new RemoveAllCommandExecutor(this));
+        getCommand("flyingblocks-examples").setExecutor(new ExamplesCommandExecutor());
     }
 
     @Override
-    public void onEnable() {
+    public void onDisable() {
         for (World world : Bukkit.getWorlds()) {
             removeFlyingBlocks(world);
         }

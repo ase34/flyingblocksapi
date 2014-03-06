@@ -10,7 +10,7 @@ public class CustomWitherSkull extends EntityWitherSkull {
 
     private final FlyingBlock flyingBlock;
 
-    private boolean initial;
+    private boolean initial = true;
 
     public CustomWitherSkull(FlyingBlock flyingBlock, World world) {
         super(world);
@@ -21,7 +21,18 @@ public class CustomWitherSkull extends EntityWitherSkull {
     public void h() {
         // tick entity
         flyingBlock.onTick();
-        super.h();
+
+        // direction is acceleration
+        this.motX += this.dirX;
+        this.motY += this.dirY;
+        this.motZ += this.dirZ;
+
+        // motion is speed
+        this.locX += this.motX;
+        this.locY += this.motY;
+        this.locZ += this.motZ;
+
+        this.setPosition(this.locX, this.locY, this.locZ);
 
         if (initial) {
             // set tracker

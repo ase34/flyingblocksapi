@@ -10,7 +10,7 @@ commands:
     usage: |
       /<command> static [<material> [<data>]]
       /<command> rising [<velocity>]
-      /<command> flag [<update-frequency> [<color>]]
+      /<command> flag [<width> [<height> [<color>]]]
       /<command> sinewave [<period> [<update-frequency>]]
 
 permissions:

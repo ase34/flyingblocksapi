@@ -25,6 +25,8 @@ public class RemoveAllCommandExecutor implements CommandExecutor {
             counter += plugin.removeFlyingBlocks(world).size();
         }
 
+        // 3 entities per moving block
+        counter = counter / 3;
         sender.sendMessage(ChatColor.GRAY + "" + counter + " flying "
                 + (counter == 1 ? "block was" : "blocks were") + " removed!");
         return true;
