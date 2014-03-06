@@ -74,7 +74,7 @@ In order to use the API, you need to add *flyingblocksapi* to your plugin's buil
   <dependency>
     <groupId>de.ase34</groupId>
     <artifactId>flyingblocksapi</artifactId>
-    <version>0.1</version>
+    <version>LATEST</version>
     <scope>provided</scope>
   </dependency>
 </dependencies>
