@@ -56,14 +56,49 @@ public abstract class FlyingBlock {
     private final double heightOffset;
     private final int horseAge;
 
+    /**
+     * Convenience constructor, uses {@link FlyingBlock#FlyingBlock(Material, byte, int, double, int)} with
+     * {@link FlyingBlock#AGE} as age parameter, {@link FlyingBlock#OFFSET} as offset parameter and
+     * {@link FlyingBlock#UPDATE_INTERVAL} as update interval parameter.
+     * 
+     * @param material
+     *            The material
+     * @param materialData
+     *            The material's data
+     */
     public FlyingBlock(Material material, byte materialData) {
         this(material, materialData, UPDATE_INTERVAL, OFFSET, AGE);
     }
 
+    /**
+     * Convenience constructor, uses {@link FlyingBlock#FlyingBlock(Material, byte, int, double, int)} with
+     * {@link FlyingBlock#AGE} as age parameter and {@link FlyingBlock#OFFSET} as offset parameter.
+     * 
+     * @param material
+     *            The material
+     * @param materialData
+     *            The material's data
+     * @param trackerUpdateInterval
+     *            The update interval of the tracker (in ticks)
+     */
     public FlyingBlock(Material material, byte materialData, int trackerUpdateInterval) {
         this(material, materialData, trackerUpdateInterval, OFFSET, AGE);
     }
 
+    /**
+     * Constructs a new {@link FlyingBlock}.
+     * 
+     * @param material
+     *            The material
+     * @param materialData
+     *            The material's data
+     * @param trackerUpdateInterval
+     *            The update interval of the tracker (in ticks)
+     * @param heightOffset
+     *            The height offset of the skull
+     * @param horseAge
+     *            The age of the horse
+     */
     public FlyingBlock(Material material, byte materialData, int trackerUpdateInterval,
             double heightOffset, int horseAge) {
         this.material = material;
