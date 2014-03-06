@@ -72,10 +72,10 @@ In order to use the API, you need to add *flyingblocksapi* to your plugin's buil
   <!-- more depenencies -->
   ...
   <dependency>
-      <groupId>de.ase34</groupId>
-      <artifactId>flyingblocksapi</artifactId>
-      <version>0.1</version>
-      <scope>provided</scope>
+    <groupId>de.ase34</groupId>
+    <artifactId>flyingblocksapi</artifactId>
+    <version>0.1</version>
+    <scope>provided</scope>
   </dependency>
 </dependencies>
 ...
