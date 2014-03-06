@@ -14,13 +14,13 @@ flyingblocksapi
 Overview
 --------
 
-* [Commands & Permissions]()
-* [Building]()
-* [Underlying Technique]()
-* [API Usage]()
-* [Credits & Special Thanks]()
-* [License]()
-* [Language Disclaimer]()
+* [Commands & Permissions](#commands--permissions)
+* [Building](#building)
+* [Underlying Technique](#underlying-technique)
+* [API Usage](#ap-usage)
+* [Credits & Special Thanks](#credits--special-thanks)
+* [License](#license)
+* [Language Disclaimer](#language-disclaimer)
 
 Commands & Permissions
 ----------------------
@@ -33,7 +33,7 @@ Commands & Permissions
 Building
 --------
 
-This plugin uses [Maven]() as build tool. Just [download]() this repositotry or clone it via Git using `git clone http://github.com/ase34/flyingblocksapi.git`, then invoke `mvn clean package` to build a new JAR file.
+This plugin uses [Maven](http://maven.apache.org/) as build tool. Just [download](https://github.com/ase34/flyingblocksapi/archive/master.zip) this repositotry's zipfile or clone it via Git using `git clone http://github.com/ase34/flyingblocksapi.git`, then invoke `mvn clean package` to build a new JAR file.
 
 Underlying Technique
 --------------------
@@ -83,7 +83,7 @@ Using the API as a developer is quite easy, he/she just has to extend the class 
 
 To spawn the prepared flying block, just call [`spawn()`](), and you're done! Then the [onTick()]() gets then called once every tick. For more information about the methods, please go to the [Javadoc]() page.
 
-Sample code for a rising block with a constant velocity using an anonymous class (taken from [`src\main\java\de\ase34\commands\examples\RisingBlockCommandExecutor.java`]()):
+Sample code for a rising block with a constant velocity using an anonymous class (taken from [`src/main/java/de/ase34/commands/examples/RisingBlockCommandExecutor.java`](blob/master/src/main/java/de/ase34/flyingblocksapi/commands/examples/RisingBlockCommandExecutor.java)):
 
 ```java
 public class RisingBlockCommandExecutor implements CommandExecutor {
@@ -125,7 +125,7 @@ public class RisingBlockCommandExecutor implements CommandExecutor {
 }
 ```
 
-Complex example code for a flying block moving up and down in a sine-wave-style (taken from [`src\main\java\de\ase34\commands\examples\SineWaveBlockCommandExecutor.java`]()): 
+Complex example code for a flying block moving up and down in a sine-wave-style (taken from [`src/main/java/de/ase34/commands/examples/SineWaveBlockCommandExecutor.java`](blob/master/src/main/java/de/ase34/flyingblocksapi/commands/examples/SineWaveBlockCommandExecutor.java)): 
 
 ```java
 public class SineWaveBlockCommandExecutor implements CommandExecutor {
@@ -182,11 +182,11 @@ public class SineWaveBlockCommandExecutor implements CommandExecutor {
 }
 ```
 
-Many other examples can be found in the [`de.ase34.flyingblocksapi.commands.examples` package](). To see these examples in-game, use the `/flyingblocks-examples` command.
+Many other examples can be found in the [`de.ase34.flyingblocksapi.commands.examples` package](tree/master/src/main/java/de/ase34/flyingblocksapi/commands/examples). To see these examples in-game, use the `/flyingblocks-examples` command.
 
 The developer has to take certain precautions when using this plugin:
 
-* All flying blocks get removed during disablings of *flyingblocksapi* (reloads/stops of the server) as well as during [WorldUnloadEvents](). To make them persistent, the developer needs to save the blocks (in a file for example) and to respawn them (preferably in the `onEnable()` method or listen to the [WorldLoadEvents]()).
+* All flying blocks get removed during disablings of *flyingblocksapi* (reloads/stops of the server) as well as during [WorldUnloadEvents](http://jd.bukkit.org/dev/apidocs/org/bukkit/event/world/WorldUnloadEvent.html). To make them persistent, the developer needs to save the blocks (in a file for example) and to respawn them (preferably in the `onEnable()` method or listen to the [WorldLoadEvents](http://jd.bukkit.org/dev/apidocs/org/bukkit/event/world/WorldLoadEvent.html)).
 
 Credits & Special Thanks
 --------------------------
@@ -211,4 +211,4 @@ The code is licensed under the terms of the GNU General Public License Version 3
 Language Disclaimer
 -------------------
 
-As I'm not a native english speaker, I appreciate every suggestion concerning the written words of this paper (spelling, grammar, phrasing, language style, ...). Thanks for your tolerance.
+As I'm not a native english speaker, I appreciate every suggestion concerning the written words of this paper (spelling, grammar, phrasing, language style, ...). You can write me a PM on [Bukkit](https://forums.bukkit.org/members/ase34.90684193/), on [Reddit](http://www.reddit.com/user/ase34/), send me an [email](asehrm34@gmail.com), or make a pull request. Thanks for your tolerance.
