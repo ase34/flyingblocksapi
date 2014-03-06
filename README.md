@@ -22,7 +22,7 @@ Overview
 * [Commands & Permissions](#commands--permissions)
 * [Building](#building)
 * [Underlying Technique](#underlying-technique)
-* [API Usage](#ap-usage)
+* [API Usage](#api-usage)
 * [Credits & Special Thanks](#credits--special-thanks)
 * [License](#license)
 * [Language Disclaimer](#language-disclaimer)
@@ -81,20 +81,22 @@ In order to use the API, you need to add *flyingblocksapi* to your plugin's buil
 ...
 ```
 
+Then, don't forget to add `depend: [flyingblocksapi]` to your *plugin.yml*.
+
 ### Implement own movement logic
 
-Using the API as a developer is quite easy, he/she just has to extend the class [de.ase34.flyingblocksapi.FlyingBlock]() and override the [onTick()]() method by his own movement logic. In the method body, some special rules need to be follown:
+Using the API as a developer is quite easy, he/she just has to extend the class [de.ase34.flyingblocksapi.FlyingBlock](http://ase34.github.io/flyingblocksapi/javadocs/de/ase34/flyingblocksapi/FlyingBlock.html) and override the [onTick()](http://ase34.github.io/flyingblocksapi/javadocs/de/ase34/flyingblocksapi/FlyingBlock.html#onTick()) method by his own movement logic. In the method body, some special rules need to be follown:
 
-* Due to a misimplementation/bug/whatever **`getBukkitEntity().teleport(Location)` does fail for entities** with a passenger attached. *flyingblocksapi* provides an **alternative by invoking [`setLocation(Location)`]()** .
+* Due to a misimplementation/bug/whatever **`getBukkitEntity().teleport(Location)` does fail for entities** with a passenger attached. *flyingblocksapi* provides an **alternative by invoking [`setLocation(Location)`](http://ase34.github.io/flyingblocksapi/javadocs/de/ase34/flyingblocksapi/FlyingBlock.html#setLocation(org.bukkit.Location))** .
 * In order to **set the velocity/direction/movement of the skull** using the Bukkit API, please **use `setVelocity(Vector)` and *not* `setDirection(Vector)`**.
-* Please keep in mind that you **are modifying the skull entity, not the falling block**. The skull is normally located 100 blocks higher than the appearance of the block. (See [`getHeightOffset()`]())
-* The offset is calibrated so that the y-coordinate of the skull minus the default height offset ([`getHeightOffset()`]()) is equal to the y-coordinate of the **downside of the block** and *not* the center of the block. In order to change this behaviour so that the y-coordinate of the skull minus the height offset [`getHeightOffset()`]() equals the y-coordinate of the block's center, **use [another constructor]()** with `FlyingBlock.OFFSET - 0.5` as the offet parameter and `FlyingBlock.AGE` as the age parameter.  
+* Please keep in mind that you **are modifying the skull entity, not the falling block**. The skull is normally located 100 blocks higher than the appearance of the block. (See [`getHeightOffset()`](http://ase34.github.io/flyingblocksapi/javadocs/de/ase34/flyingblocksapi/FlyingBlock.html#getHeightOffset()))
+* The offset is calibrated so that the y-coordinate of the skull minus the default height offset ([`getHeightOffset()`](http://ase34.github.io/flyingblocksapi/javadocs/de/ase34/flyingblocksapi/FlyingBlock.html#getHeightOffset())) is equal to the y-coordinate of the **downside of the block** and *not* the center of the block. In order to change this behaviour so that the y-coordinate of the skull minus the height offset [`getHeightOffset()`](http://ase34.github.io/flyingblocksapi/javadocs/de/ase34/flyingblocksapi/FlyingBlock.html#getHeightOffset()) equals the y-coordinate of the block's center, **use [another constructor](http://ase34.github.io/flyingblocksapi/javadocs/de/ase34/flyingblocksapi/FlyingBlock.html#FlyingBlock(org.bukkit.Material, byte, int, double, int))** with  `FlyingBlock.UPDATE_INTERVAL` as the update-interval parameter, `FlyingBlock.OFFSET - 0.5` as the offet parameter and `FlyingBlock.AGE` as the age parameter.  
 
-To spawn the prepared flying block, just call [`spawn()`](), and you're done! Then the [onTick()]() gets then called once every tick. For more information about the methods, please go to the [Javadoc]() page.
+To spawn the prepared flying block, just call [`spawn()`](http://ase34.github.io/flyingblocksapi/javadocs/de/ase34/flyingblocksapi/FlyingBlock.html#spawn()), and you're done! Then the [onTick()](http://ase34.github.io/flyingblocksapi/javadocs/de/ase34/flyingblocksapi/FlyingBlock.html#onTick()) gets then called once every tick. For more information about the methods, please go to the [Javadoc](http://ase34.github.io/flyingblocksapi/javadocs/de/ase34/flyingblocksapi/FlyingBlock.html) page.
 
 ### Examples
 
-Sample code for a rising block with a constant velocity using an anonymous class (taken from [`src/main/java/de/ase34/commands/examples/RisingBlockCommandExecutor.java`](blob/master/src/main/java/de/ase34/flyingblocksapi/commands/examples/RisingBlockCommandExecutor.java)):
+Sample code for a rising block with a constant velocity using an anonymous class (taken from [`src/main/java/de/ase34/commands/examples/RisingBlockCommandExecutor.java`](src/main/java/de/ase34/flyingblocksapi/commands/examples/RisingBlockCommandExecutor.java)):
 
 ```java
 public class RisingBlockCommandExecutor implements CommandExecutor {
@@ -136,7 +138,7 @@ public class RisingBlockCommandExecutor implements CommandExecutor {
 }
 ```
 
-Complex example code for a flying block moving up and down in a sine-wave-style (taken from [`src/main/java/de/ase34/commands/examples/SineWaveBlockCommandExecutor.java`](blob/master/src/main/java/de/ase34/flyingblocksapi/commands/examples/SineWaveBlockCommandExecutor.java)): 
+Complex example code for a flying block moving up and down in a sine-wave-style (taken from [`src/main/java/de/ase34/commands/examples/SineWaveBlockCommandExecutor.java`](src/main/java/de/ase34/flyingblocksapi/commands/examples/SineWaveBlockCommandExecutor.java)): 
 
 ```java
 public class SineWaveBlockCommandExecutor implements CommandExecutor {
@@ -211,7 +213,7 @@ Credits & Special Thanks
 License
 -------
 
-The code is licensed under the terms of the GNU General Public License Version 3. See [LICENSE.txt]() for full license text.
+The code is licensed under the terms of the GNU General Public License Version 3. See [LICENSE](LICENSE) for full license text.
 
 > Copyright (C) 2014 ase34
 > 
