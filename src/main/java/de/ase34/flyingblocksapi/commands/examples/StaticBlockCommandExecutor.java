@@ -57,7 +57,7 @@ public class StaticBlockCommandExecutor implements CommandExecutor {
         // spawn block
         block.spawn(((Player) sender).getLocation());
 
-        sender.sendMessage(ChatColor.GRAY + "Sucessfully spawned a rising block!");
+        sender.sendMessage(ChatColor.GRAY + "Sucessfully spawned a static block!");
         return true;
     }
 
