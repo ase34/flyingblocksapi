@@ -11,6 +11,11 @@ flyingblocksapi
 
 ... no plugin yet :( You can write me a PM on [Bukkit](https://forums.bukkit.org/members/ase34.90684193/), on [Reddit](http://www.reddit.com/user/ase34/), send me an [email](asehrm34@gmail.com), or make a pull request if you want your plugin to appear here.
 
+### Important Links
+
+* BukkitDev Project Page - http://dev.bukkit.org/bukkit-plugins/flyingblocksapi/
+* Javadocs - http://ase34.github.io/flyingblocksapi/javadocs
+
 Overview
 --------
 
@@ -219,4 +224,4 @@ The code is licensed under the terms of the GNU General Public License Version 3
 Language Disclaimer
 -------------------
 
-As I'm not a native english speaker, I appreciate every suggestion concerning the written words of this paper (spelling, grammar, phrasing, language style, ...). You can write me a PM on [Bukkit](https://forums.bukkit.org/members/ase34.90684193/), on [Reddit](http://www.reddit.com/user/ase34/), send me an [email](asehrm34@gmail.com), or make a pull request. Thanks for your tolerance.
+As I'm not a native english speaker, I appreciate every suggestion concerning the written words of this paper, of the comments in the code, or of the javadoc (spelling, grammar, phrasing, language style, ...). You can write me a PM on [Bukkit](https://forums.bukkit.org/members/ase34.90684193/), on [Reddit](http://www.reddit.com/user/ase34/), send me an [email](asehrm34@gmail.com), or make a pull request. Thanks for your tolerance.
