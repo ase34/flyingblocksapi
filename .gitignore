@@ -1,8 +1,4 @@
-# Eclipse stuff
+/bin
 /.classpath
 /.project
 /.settings
-
-# Maven
-/build.xml
-/target
