@@ -35,9 +35,7 @@ public class SineWaveBlockCommandExecutor implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        final Location playerLocation = player.getLocation().clone().add(new Vector(0, 0.5, 0));
-        // we add 0.5 to the y-coordinate so that the center is not at the player's feet (take a look at the
-        // FlyingBlocks constructor)
+        final Location playerLocation = player.getLocation().clone();
         final long startTime = player.getWorld().getFullTime();
         // we save the creation time so that the sine wave starts at its origin (x=0; y=sin(x)=0)
 
@@ -46,10 +44,7 @@ public class SineWaveBlockCommandExecutor implements CommandExecutor {
         int trackerUpdateInterval = args.length > 1 ? Integer.parseInt(args[1]) : 4;
 
         // anonymous class
-        FlyingBlock block = new FlyingBlock(Material.STONE, (byte) 0, trackerUpdateInterval,
-                FlyingBlock.OFFSET - 0.5, FlyingBlock.AGE) {
-            // we used FlyingBlock.OFFSET - 0.5 so that the computed locations represent the center of the block, not
-            // the downfacing side
+        FlyingBlock block = new FlyingBlock(Material.STONE, (byte) 0, trackerUpdateInterval) {
             @Override
             public void onTick() {
                 // constants

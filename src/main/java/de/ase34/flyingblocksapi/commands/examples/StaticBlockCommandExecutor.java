@@ -55,7 +55,8 @@ public class StaticBlockCommandExecutor implements CommandExecutor {
             }
         };
         // spawn block
-        block.spawn(((Player) sender).getLocation());
+        block.spawn(((Player) sender).getLocation().clone().add(0, 0.5, 0));
+        // we want to appear the downfacing side of the block at his feet, so add 0.5 to his y-coordinate
 
         sender.sendMessage(ChatColor.GRAY + "Sucessfully spawned a rising block!");
         return true;

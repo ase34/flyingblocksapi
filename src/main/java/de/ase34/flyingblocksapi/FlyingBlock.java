@@ -34,7 +34,7 @@ public abstract class FlyingBlock {
     /**
      * Default age for the horse.
      */
-    public static int AGE = -4057200;
+    public static int AGE = -4077000;
     /**
      * Default height offset for the skull.
      */
