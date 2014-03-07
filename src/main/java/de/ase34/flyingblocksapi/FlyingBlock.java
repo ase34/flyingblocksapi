@@ -105,8 +105,9 @@ public abstract class FlyingBlock {
     }
 
     /**
-     * Creates and spawns this {@link FlyingBlock} at the specified position. If {@link #spawn(Location)} was already
-     * called, this methods first invokes {@link #remove()}.
+     * Creates and spawns this {@link FlyingBlock} at the specified position. The height offset will be automatically
+     * applied so that the center of the falling block appears at the given position. If {@link #spawn(Location)} was
+     * already called, this methods first invokes {@link #remove()}.
      * 
      * @param location
      *            The location to spawn the entity at
