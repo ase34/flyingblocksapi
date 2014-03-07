@@ -198,8 +198,13 @@ Many other examples can be found in the [`de.ase34.flyingblocksapi.commands.exam
 
 The developer has to take certain precautions when using this plugin:
 
-* All flying blocks get removed during disablings of *flyingblocksapi* (reloads/stops of the server) as well as during [WorldUnloadEvents](http://jd.bukkit.org/dev/apidocs/org/bukkit/event/world/WorldUnloadEvent.html). To make them persistent, the developer needs to save the blocks (in a file for example) and to respawn them (preferably in the `onEnable()` method or listen to the [WorldLoadEvents](http://jd.bukkit.org/dev/apidocs/org/bukkit/event/world/WorldLoadEvent.html)).
-
+* Flying blocks get removed during
+  * Disablings of *flyingblocksapi* (reloads/stops of the server) in all worlds.
+  * [WorldUnloadEvents](http://jd.bukkit.org/dev/apidocs/org/bukkit/event/world/WorldUnloadEvent.html) in the unloaded world.
+  * When the last player leaves a world in the now empty world.
+  
+  To make them persistent, the developer needs to save the blocks (in a file for example) and to respawn them (preferably in the `onEnable()` method or listen to the [WorldLoadEvents](http://jd.bukkit.org/dev/apidocs/org/bukkit/event/world/WorldLoadEvent.html)).
+  
 Credits & Special Thanks
 --------------------------
 
