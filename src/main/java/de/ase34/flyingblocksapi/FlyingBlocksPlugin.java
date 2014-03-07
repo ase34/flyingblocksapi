@@ -43,6 +43,8 @@ public class FlyingBlocksPlugin extends JavaPlugin implements Listener {
 
         getCommand("flyingblocks-removeall").setExecutor(new RemoveAllCommandExecutor(this));
         getCommand("flyingblocks-examples").setExecutor(new ExamplesCommandExecutor());
+
+        getServer().getPluginManager().registerEvents(this, this);
     }
 
     @Override
