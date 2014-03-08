@@ -25,7 +25,7 @@ Overview
 * [API Usage](#api-usage)
 * [Credits & Special Thanks](#credits--special-thanks)
 * [License](#license)
-* [Language Disclaimer](#language-disclaimer)
+* [Language Notice](#language-notice)
 
 Commands & Permissions
 ----------------------
@@ -225,7 +225,7 @@ The code is licensed under the terms of the GNU General Public License Version 3
 > 
 > You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-Language Disclaimer
+Language Notice
 -------------------
 
 As I'm not a native english speaker, I appreciate every suggestion concerning the written words of this paper, of the comments in the code, or of the javadoc (spelling, grammar, phrasing, language style, ...). You can write me a PM on [Bukkit](https://forums.bukkit.org/members/ase34.90684193/), on [Reddit](http://www.reddit.com/user/ase34/), send me an [email](asehrm34@gmail.com), or make a pull request. Thanks for your tolerance.
