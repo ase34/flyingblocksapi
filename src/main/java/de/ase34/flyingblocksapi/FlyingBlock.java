@@ -150,12 +150,21 @@ public abstract class FlyingBlock {
     }
 
     /**
+     * <p>
      * Sets the location of this {@link FlyingBlock} to the specified location. Please keep in mind that this sets the
      * location of the wither skull, not the block itself. The block is located below the skull. (See
      * {@link #getHeightOffset()}) If the world of the speicified location does not match that of the entity,
      * {@link #remove()} is invoked followed by {@link #spawn(Location)} with the specified location. This method needs
      * to be used in {@link #onTick()} instead of <code>getBukkitEntity().teleport(Location)</code>.
+     * </p>
      * 
+     * <p>
+     * If the horse's age and the height offset is the default one, {@link #setBlockLocation(Location)} might be a good
+     * utility.
+     * </p>
+     * 
+     * @see #setBlockLocation(Location)
+     * @see #getHeightOffset()
      * @param location
      *            The location to move the entity to
      * @throws UnsupportedOperationException
@@ -174,6 +183,21 @@ public abstract class FlyingBlock {
             entity.setLocation(location.getX(), location.getY(), location.getZ(),
                     location.getYaw(), location.getPitch());
         }
+    }
+
+    /**
+     * Convenience method to make the block's center appear at the specified position. This calls
+     * {@link #setLocation(Location)} with the height offset ({@link #getHeightOffset()}) added to the y-coordinate
+     * location. If the height offset or the age is different to the default values, this method might not give proper
+     * results.
+     * 
+     * @see #setLocation(Location)
+     * @see #getHeightOffset()
+     * @see #getHorseAge()
+     * @param location
+     */
+    public void setBlockLocation(Location location) {
+        setLocation(location.add(0, heightOffset, 0));
     }
 
     /**
