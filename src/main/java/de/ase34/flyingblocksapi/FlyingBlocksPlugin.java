@@ -23,6 +23,7 @@ import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_7_R1.CraftWorld;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.world.WorldUnloadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -43,6 +44,8 @@ public class FlyingBlocksPlugin extends JavaPlugin implements Listener {
 
         getCommand("flyingblocks-removeall").setExecutor(new RemoveAllCommandExecutor(this));
         getCommand("flyingblocks-examples").setExecutor(new ExamplesCommandExecutor());
+
+        getServer().getPluginManager().registerEvents(this, this);
     }
 
     @Override
@@ -55,6 +58,15 @@ public class FlyingBlocksPlugin extends JavaPlugin implements Listener {
     @EventHandler
     public void onWorldUnload(WorldUnloadEvent ev) {
         removeFlyingBlocks(ev.getWorld());
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent ev) {
+        World world = ev.getPlayer().getWorld();
+        if (world.getPlayers().size() == 1) {
+            // this is the last player
+            removeFlyingBlocks(world);
+        }
     }
 
     public List<Entity> removeFlyingBlocks(World world) {
