@@ -154,8 +154,9 @@ public abstract class FlyingBlock {
      * Sets the location of this {@link FlyingBlock} to the specified location. Please keep in mind that this sets the
      * location of the wither skull, not the block itself. The block is located below the skull. (See
      * {@link #getHeightOffset()}) If the world of the speicified location does not match that of the entity,
-     * {@link #remove()} is invoked followed by {@link #spawn(Location)} with the specified location. This method needs
-     * to be used in {@link #onTick()} instead of <code>getBukkitEntity().teleport(Location)</code>.
+     * {@link #remove()} is invoked followed by {@link #spawn(Location)} with the specified location. In
+     * {@link #onTick()}, this method needs to be used instead of <code>getBukkitEntity().teleport(Location)</code> as
+     * the latter one is broken with entities with passengers.
      * </p>
      * 
      * <p>
