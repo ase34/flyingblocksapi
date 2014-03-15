@@ -96,103 +96,12 @@ To spawn the prepared flying block, just call [spawn(Location)](http://ase34.git
 
 ### Examples
 
-Sample code for a rising block with a constant velocity using an anonymous class (taken from [`src/main/java/de/ase34/commands/examples/RisingBlockCommandExecutor.java`](src/main/java/de/ase34/flyingblocksapi/commands/examples/RisingBlockCommandExecutor.java)):
+Sample codes are available in the [`de.ase34.flyingblocksapi.commands.examples` package](tree/master/src/main/java/de/ase34/flyingblocksapi/commands/examples). Many of the examples are using anonymous or nested classes. Here's a small selection:
 
-```java
-public class RisingBlockCommandExecutor implements CommandExecutor {
+* [RisingBlockCommandExecutor.java](src/main/java/de/ase34/flyingblocksapi/commands/examples/RisingBlockCommandExecutor.java) - Simple example that spawns a flying block which rises wiht constant velocity in the sky
+* [SineWaveBlockCommandExecutor.java](src/main/java/de/ase34/flyingblocksapi/commands/examples/SineWaveBlockCommandExecutor.java) - Complex example code for a flying block moving up and down in a sine-wave-style
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // player check
-        if (!(sender instanceof Player)) {
-            sender.sendMessage("Only available as player!");
-            return true;
-        }
-
-        // variables
-        final double velocity = args.length > 0 ? Double.parseDouble(args[0]) : 0.05;
-
-        // constants
-        final Vector velocityVector = new Vector(0, velocity, 0);
-        int trackerUpdateInterval = 4;
-        // we can use a high update interval (0.5 seconds) because the velocity mainly handles the movement
-
-        // anonymous class
-        FlyingBlock block = new FlyingBlock(Material.STONE, (byte) 0, trackerUpdateInterval) {
-            @Override
-            public void onTick() {
-                // set velocity
-                if (!this.getBukkitEntity().getVelocity().equals(velocityVector)) {
-                    // huh, wrong velocity, override...
-                    this.getBukkitEntity().setVelocity(velocityVector);
-                }
-            }
-        };
-        // spawn block
-        block.spawn(((Player) sender).getLocation());
-
-        sender.sendMessage(ChatColor.GRAY + "Sucessfully spawned a static block!");
-        return true;
-    }
-
-}
-```
-
-Complex example code for a flying block moving up and down in a sine-wave-style (taken from [`src/main/java/de/ase34/commands/examples/SineWaveBlockCommandExecutor.java`](src/main/java/de/ase34/flyingblocksapi/commands/examples/SineWaveBlockCommandExecutor.java)): 
-
-```java
-public class SineWaveBlockCommandExecutor implements CommandExecutor {
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // player instance check
-        if (!(sender instanceof Player)) {
-            sender.sendMessage("Only available as player!");
-            return true;
-        }
-
-        Player player = (Player) sender;
-        final Location playerLocation = player.getLocation().clone();
-        final long startTime = player.getWorld().getFullTime();
-        // we save the creation time so that the sine wave starts at its origin (x=0; y=sin(x)=0) 
-
-        // variables
-        final double periodSeconds = args.length > 0 ? Double.parseDouble(args[0]) : 3;
-        int trackerUpdateInterval = args.length > 1 ? Integer.parseInt(args[1]) : 4;
-
-        // anonymous class
-        FlyingBlock block = new FlyingBlock(Material.STONE, (byte) 0, trackerUpdateInterval) {
-            @Override
-            public void onTick() {
-                // constants
-                double amplitude = 3.0; // peak amplitude of 3 (-3 to 3)
-                double period = (2 * Math.PI) / (periodSeconds * 20); // period of `periodSeconds` seconds
-
-                // variables
-                double time = getBukkitEntity().getWorld().getFullTime();
-
-                // math
-                double y = Math.sin((time - startTime) * period) * amplitude;
-                double nexty = Math.sin((time + 1 - startTime) * period) * amplitude;
-                // we calculate the next y value so we can compute the current velocity
-
-                setLocation(playerLocation.clone().add(0, y + getHeightOffset(), 0));
-                // we add the height offset because we are modifying the coordinates of the skull, not the block
-                setVelocity(new Vector(0, nexty - y, 0));
-                // velocity until the next tick
-            }
-        };
-        // spawn block
-        block.spawn(playerLocation);
-
-        sender.sendMessage(ChatColor.GRAY + "Sucessfully spawned a block moving in a sine wave!");
-        return true;
-    }
-
-}
-```
-
-Many other examples can be found in the [`de.ase34.flyingblocksapi.commands.examples` package](tree/master/src/main/java/de/ase34/flyingblocksapi/commands/examples). To see these examples in-game, use the `/flyingblocks-examples` command.
+To see these examples in-game, use the `/flyingblocks-examples` command. 
 
 ### Other notes for the developer
 
