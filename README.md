@@ -112,7 +112,7 @@ The developer has to take certain precautions when using this plugin:
   * [WorldUnloadEvents](http://jd.bukkit.org/dev/apidocs/org/bukkit/event/world/WorldUnloadEvent.html) in the unloaded world.
   * When the last player leaves a world in the now empty world.
   
-  To make them persistent, the developer needs to save the blocks (in a file for example) and to respawn them (preferably in the `onEnable()` method or listen to the [WorldLoadEvents](http://jd.bukkit.org/dev/apidocs/org/bukkit/event/world/WorldLoadEvent.html)).
+  To make them persistent, the developer needs to save the blocks (in a file for example) and to respawn them during the opposite events of the above-mentioned (`onEnable()`, WorldLoadEvent, PlayerJoinEvent). 
   
 Credits & Special Thanks
 --------------------------
