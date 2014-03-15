@@ -81,6 +81,8 @@ public class FlagCommandExecutor implements CommandExecutor {
         }
 
         player.sendMessage(ChatColor.GRAY + "Sucessfully spawned a new flag!");
+        player.sendMessage(ChatColor.GRAY + ChatColor.ITALIC.toString()
+                + "(Requires day/night cycle in order to be moving)");
         return true;
     }
 }

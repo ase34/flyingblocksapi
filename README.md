@@ -32,7 +32,7 @@ Commands & Permissions
 
 * */flyingblocks-removeall* - Removes all flying blocks from the worlds. Good for debugging.
   `flyingblocks.removeall` (OP by default)
-* */flyingblocks-examples* - Lists all commands of the examples, check them out! :P
+* */flyingblocks-examples* - Lists all commands of the examples, check them out! :P *Note:* Most of the examples depend on world ticks (day/night cycle needs to be running)
   `flyingblocks.examples` (OP by default)
 
 Building

@@ -69,6 +69,8 @@ public class SineWaveBlockCommandExecutor implements CommandExecutor {
         block.spawn(playerLocation);
 
         sender.sendMessage(ChatColor.GRAY + "Sucessfully spawned a block moving in a sine wave!");
+        player.sendMessage(ChatColor.GRAY + ChatColor.ITALIC.toString()
+                + "(Requires day/night cycle in order to be moving)");
         return true;
     }
 
