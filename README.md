@@ -5,7 +5,7 @@ flyingblocksapi
 
 ### Some Impressions
 
-<img alt="Huh, a nice-looking image shoud be here :(" title="A waving flag" src="http://i.imgur.com/skxCTsf.gif" width=140 height=94>
+<img alt="Huh, a nice-looking image should be here :(" title="A waving flag" src="http://i.imgur.com/skxCTsf.gif" width=140 height=94>
 
 ### Used in...
 
@@ -43,11 +43,11 @@ This plugin uses [Maven](http://maven.apache.org/) as build tool. Just [download
 Underlying Technique
 --------------------
 
-This technique is heavily inspired by [The Holographic Displays](http://www.youtube.com/watch?v=q1B19JvX5TE) of [Asdjke](http://www.youtube.com/user/AsdjkeAndBro). Without his ideas and research, this plugin would likely never been made. Thanks. This should give you an abstract explanation how this plugin achieves its behavoiur:
+This technique is heavily inspired by [The Holographic Displays](http://www.youtube.com/watch?v=q1B19JvX5TE) of [Asdjke](http://www.youtube.com/user/AsdjkeAndBro). Without his ideas and research, this plugin would likely never been made. Thanks. This should give you an abstract explanation how this plugin achieves its behavior:
 
 * First, a *Wither Skull* will be spawned about 100 blocks above the block's desired spawnpoint.
   That skull is not affected by gravity at the client, so there is *no* constant downfall-cancellation (for example, using packets) needed.
-* Then, a *Horse* is attached to the skull with an age of -4057200. The extemly low age causes the client to render the horse as invisible, but also setting the position of their passengers aroun 100 block below the horse.
+* Then, a *Horse* is attached to the skull with an age of -4057200. The extremely low age causes the client to render the horse as invisible, but also setting the position of their passengers around 100 block below the horse.
 * Finally, a *Falling Sand Block* with a different block id is attached to the horse. Because of the age of the horse and the height of the skull, the block appears a the exact spawn position. The falling block is not affected by gravity on the client because it is an (indirect) passenger of the skull.
 
 API Usage
