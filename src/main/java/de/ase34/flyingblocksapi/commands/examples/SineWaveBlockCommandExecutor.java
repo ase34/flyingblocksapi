@@ -59,7 +59,7 @@ public class SineWaveBlockCommandExecutor implements CommandExecutor {
                 double nexty = Math.sin((time + 1 - startTime) * period) * amplitude;
                 // we calculate the next y value so we can compute the current velocity
 
-                setBlockLocation(playerLocation);
+                setBlockLocation(playerLocation.clone().add(0, y, 0));
                 // we use setBlockLocation because we are modifying the location of the block, not the skull
                 setVelocity(new Vector(0, nexty - y, 0));
                 // velocity until the next tick
