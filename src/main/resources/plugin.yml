@@ -11,7 +11,7 @@ commands:
       /<command> static [<material> [<data>]]
       /<command> rising [<velocity>]
       /<command> flag [<width> [<height> [<color>]]]
-      /<command> sinewave [<period> [<update-frequency>]]
+      /<command> sinewave [<period> [<update-delay>]]
 
 permissions:
   flyingblocks.removeall:

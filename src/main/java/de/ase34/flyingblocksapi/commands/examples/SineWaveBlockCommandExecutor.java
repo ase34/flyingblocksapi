@@ -41,10 +41,10 @@ public class SineWaveBlockCommandExecutor implements CommandExecutor {
 
         // variables
         final double periodSeconds = args.length > 0 ? Double.parseDouble(args[0]) : 3;
-        int trackerUpdateInterval = args.length > 1 ? Integer.parseInt(args[1]) : 4;
+        final int updateDelay = args.length > 1 ? Integer.parseInt(args[1]) : 1;
 
         // anonymous class
-        FlyingBlock block = new FlyingBlock(Material.STONE, (byte) 0, trackerUpdateInterval) {
+        FlyingBlock block = new FlyingBlock(Material.STONE, (byte) 0, 5) {
             @Override
             public void onTick() {
                 // constants
@@ -52,17 +52,22 @@ public class SineWaveBlockCommandExecutor implements CommandExecutor {
                 double period = (2 * Math.PI) / (periodSeconds * 20); // period of `periodSeconds` seconds
 
                 // variables
-                double time = getBukkitEntity().getWorld().getFullTime();
+                long time = getBukkitEntity().getWorld().getFullTime();
+
+                // only update after the delay ticks have passed
+                if ((long) time % updateDelay != 0) {
+                    return;
+                }
 
                 // math
                 double y = Math.sin((time - startTime) * period) * amplitude;
-                double nexty = Math.sin((time + 1 - startTime) * period) * amplitude;
-                // we calculate the next y value so we can compute the current velocity
+                double nexty = Math.sin((time + updateDelay - startTime) * period) * amplitude;
+                // we calculate the next y value so we can compute the mean velocity until the next update
 
                 setBlockLocation(playerLocation.clone().add(0, y, 0));
                 // we use setBlockLocation because we are modifying the location of the block, not the skull
-                setVelocity(new Vector(0, nexty - y, 0));
-                // velocity until the next tick
+                setVelocity(new Vector(0, (nexty - y) / updateDelay, 0));
+                // velocity until the next update (after the delay)
             }
         };
         // spawn block
