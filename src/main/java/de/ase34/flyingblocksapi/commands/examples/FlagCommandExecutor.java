@@ -20,6 +20,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
 
 import de.ase34.flyingblocksapi.FlyingBlock;
 
@@ -44,14 +45,26 @@ public class FlagCommandExecutor implements CommandExecutor {
             double a = 0.3; // wavelength
             double b = Math.PI / 20; // frequency
             double s = 0.2; // slope
+            double u = 3; // update delay
+
+            // only update after the delay ticks have passed
+            if (t % u != 0) {
+                return;
+            }
 
             // actual math
             double y = Math.sin(x * a - t * b) * s * x;
+            double nextY = Math.sin(x * a - (t + u) * b) * s * x;
 
-            // set the position
+            // calculates the mean velocity until the next update (after the delay)
+            double velocity = (nextY - y) / u;
+
+            // set the position and velocity
             Location location = getBukkitEntity().getLocation();
             location.setZ(y + playerLocation.getZ());
+
             setLocation(location);
+            setVelocity(new Vector(0, 0, velocity));
         }
     }
 
@@ -74,7 +87,7 @@ public class FlagCommandExecutor implements CommandExecutor {
             for (int y = 0; y < height; y++) {
                 // create on each position a new flying block
 
-                FlyingBlock block = new FlagFlyingBlock(Material.WOOL, (byte) flagColor, 1,
+                FlyingBlock block = new FlagFlyingBlock(Material.WOOL, (byte) flagColor, 10,
                         playerLocation);
                 block.spawn(playerLocation.clone().add(x, y, 0));
             }
