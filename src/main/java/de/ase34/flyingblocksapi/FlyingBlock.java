@@ -156,7 +156,7 @@ public abstract class FlyingBlock {
      * {@link #getHeightOffset()}) If the world of the speicified location does not match that of the entity,
      * {@link #remove()} is invoked followed by {@link #spawn(Location)} with the specified location. In
      * {@link #onTick()}, this method needs to be used instead of <code>getBukkitEntity().teleport(Location)</code> as
-     * the latter one is broken with entities with passengers.
+     * the latter one is broken for entities with passengers.
      * </p>
      * 
      * <p>
@@ -252,8 +252,8 @@ public abstract class FlyingBlock {
     }
 
     /**
-     * Gets the height offset of the skull. The downfacing side of flying block appears at the y-coordinate of the skull
-     * minus the return value of {@link #getHeightOffset()}.
+     * Gets the height offset of the skull. The y-coordinate of the flying block's center appears at the y-coordinate of
+     * the skull minus the return value of {@link #getHeightOffset()}.
      * 
      * @return The height offset
      */
