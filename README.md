@@ -92,7 +92,7 @@ Using the API as a developer is quite easy, he/she just has to extend the class 
 * Please keep in mind that you **are modifying the skull entity, not the falling block**. The skull is normally located 100 blocks higher than the appearance of the block. (See [getHeightOffset()](http://ase34.github.io/flyingblocksapi/javadocs/latest/de/ase34/flyingblocksapi/FlyingBlock.html#getHeightOffset()))
 * The offset is calibrated so that the y-coordinate of the skull minus the default height offset ([getHeightOffset()](http://ase34.github.io/flyingblocksapi/javadocs/latest/de/ase34/flyingblocksapi/FlyingBlock.html#getHeightOffset())) is equal to the y-coordinate of the **center** and *not* the downfacing side of the block. So, a block spawned at `(10.5, 60.5, 23.5)` will perfectly align with the grid of the 'normal' blocks.
 
-To spawn the prepared flying block, just call [spawn(Location)](http://ase34.github.io/flyingblocksapi/javadocs/latest/de/ase34/flyingblocksapi/FlyingBlock.html#spawn(org.bukkit.Location)), and you're done! Then the [onTick()](http://ase34.github.io/flyingblocksapi/javadocs/latest/de/ase34/flyingblocksapi/FlyingBlock.html#onTick()) gets then called once every tick. For more information about the methods, please go to the [Javadoc](http://ase34.github.io/flyingblocksapi/javadocs/latest/de/ase34/flyingblocksapi/FlyingBlock.html) page.
+To spawn the prepared flying block, just construct a new object of a FlyingBlock, and then call [spawn(Location)](http://ase34.github.io/flyingblocksapi/javadocs/latest/de/ase34/flyingblocksapi/FlyingBlock.html#spawn(org.bukkit.Location)), and you're done! Then the [onTick()](http://ase34.github.io/flyingblocksapi/javadocs/latest/de/ase34/flyingblocksapi/FlyingBlock.html#onTick()) gets then called once every tick. For more information about the methods, please go to the [Javadoc](http://ase34.github.io/flyingblocksapi/javadocs/latest/de/ase34/flyingblocksapi/FlyingBlock.html) page.
 
 ### Examples
 
@@ -113,7 +113,12 @@ The developer has to take certain precautions when using this plugin:
   * When the last player leaves a world in the now empty world.
   
   To make them persistent, the developer needs to save the blocks (in a file for example) and to respawn them during the opposite events of the above-mentioned (`onEnable()`, WorldLoadEvent, PlayerJoinEvent). 
+* The parameter `trackerUpdateInterval` specifies how often the NMS entity tracker sends packets to update the location of the flying block per tick. See [EntityTrackerEntry.java](https://github.com/SpigotMC/mc-dev/blob/master/net/minecraft/server/EntityTrackerEntry.java) of the mc-dev repository. (Important lines: [99](https://github.com/SpigotMC/mc-dev/blob/master/net/minecraft/server/EntityTrackerEntry.java?source=c#L98)).
+  * It does not influence the smoothness of flying blocks with velocities applied. Packets about velocity updates are broadcasted immediately after the onTick() method. However, the tracker still broadcasts packets about the location in the specified interval to prevent desyncs.
+  * When teleporting, the updating packet will be sent when the entity tracker triggers. (So, the maximum delay is the value of the tracker-update-interval)
   
+  Thus, choose a high tracker-update-interval (5-10) if your movement only relies on velocities, and choose a low one (1-2) if your movement heavily relies on fast location updates. 
+
 Credits & Special Thanks
 --------------------------
 
