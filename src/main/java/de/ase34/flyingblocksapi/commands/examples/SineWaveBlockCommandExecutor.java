@@ -66,8 +66,8 @@ public class SineWaveBlockCommandExecutor implements CommandExecutor {
 
                 setBlockLocation(playerLocation.clone().add(0, y, 0));
                 // we use setBlockLocation because we are modifying the location of the block, not the skull
-                setVelocity(new Vector(0, nexty, 0).subtract(new Vector(0, y, 0)
-                        .multiply(1 / updateDelay)));
+                setVelocity((new Vector(0, nexty, 0).subtract(new Vector(0, y, 0))
+                        .multiply(1D / (double) updateDelay)));
                 // velocity until the next update (after the delay)
             }
         };

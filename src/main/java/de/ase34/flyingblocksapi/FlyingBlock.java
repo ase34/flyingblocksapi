@@ -145,6 +145,8 @@ public abstract class FlyingBlock {
             return;
         }
 
+        entity.passenger.passenger.die();
+        entity.passenger.die();
         entity.die();
         entity = null;
     }
