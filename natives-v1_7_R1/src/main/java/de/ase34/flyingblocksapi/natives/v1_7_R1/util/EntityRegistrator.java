@@ -14,7 +14,7 @@
 /*
  * This code is pulled from Jogy34 (https://forums.bukkit.org/threads/tutorial-1-7-creating-a-custom-entity.212849/)
  */
-package de.ase34.flyingblocksapi.util;
+package de.ase34.flyingblocksapi.natives.v1_7_R1.util;
 
 import java.lang.reflect.Field;
 import java.util.Map;

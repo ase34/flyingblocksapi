@@ -11,25 +11,20 @@
  * You should have received a copy of the GNU General Public License along with this program. If not, see
  * <http://www.gnu.org/licenses/>.
  */
-package de.ase34.flyingblocksapi.entities;
+package de.ase34.flyingblocksapi.natives.v1_7_R1.entites;
 
-import net.minecraft.server.v1_7_R1.Entity;
-import net.minecraft.server.v1_7_R1.EntityFallingBlock;
+import net.minecraft.server.v1_7_R1.EntityHorse;
 import net.minecraft.server.v1_7_R1.World;
 
-public class CustomFallingBlock extends EntityFallingBlock {
+public class CustomHorse extends EntityHorse {
 
-    private final Entity forcedVehicle;
-
-    public CustomFallingBlock(Entity forcedVehicle, World world) {
+    public CustomHorse(World world) {
         super(world);
-        this.forcedVehicle = forcedVehicle;
     }
 
     @Override
     public void h() {
-        // set vehicle
-        this.setPassengerOf(forcedVehicle);
+        // do nothing
     }
 
 }

@@ -11,7 +11,7 @@
  * You should have received a copy of the GNU General Public License along with this program. If not, see
  * <http://www.gnu.org/licenses/>.
  */
-package de.ase34.flyingblocksapi.util;
+package de.ase34.flyingblocksapi.natives.v1_7_R1.util;
 
 import net.minecraft.server.v1_7_R1.EntityFallingBlock;
 import net.minecraft.server.v1_7_R1.EntityHorse;
@@ -23,9 +23,9 @@ import org.bukkit.craftbukkit.v1_7_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_7_R1.util.CraftMagicNumbers;
 
 import de.ase34.flyingblocksapi.FlyingBlock;
-import de.ase34.flyingblocksapi.entities.CustomFallingBlock;
-import de.ase34.flyingblocksapi.entities.CustomHorse;
-import de.ase34.flyingblocksapi.entities.CustomWitherSkull;
+import de.ase34.flyingblocksapi.natives.v1_7_R1.entites.CustomFallingBlock;
+import de.ase34.flyingblocksapi.natives.v1_7_R1.entites.CustomHorse;
+import de.ase34.flyingblocksapi.natives.v1_7_R1.entites.CustomWitherSkull;
 
 public class SpawnHelper {
 
