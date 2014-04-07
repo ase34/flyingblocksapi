@@ -11,13 +11,13 @@
  * You should have received a copy of the GNU General Public License along with this program. If not, see
  * <http://www.gnu.org/licenses/>.
  */
-package de.ase34.flyingblocksapi.entities;
+package de.ase34.flyingblocksapi.natives.v1_7_R1.entites;
 
+import de.ase34.flyingblocksapi.FlyingBlock;
 import net.minecraft.server.v1_7_R1.EntityTracker;
 import net.minecraft.server.v1_7_R1.EntityWitherSkull;
 import net.minecraft.server.v1_7_R1.World;
 import net.minecraft.server.v1_7_R1.WorldServer;
-import de.ase34.flyingblocksapi.FlyingBlock;
 
 public class CustomWitherSkull extends EntityWitherSkull {
 

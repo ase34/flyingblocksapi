@@ -13,18 +13,13 @@
  */
 package de.ase34.flyingblocksapi;
 
-import net.minecraft.server.v1_7_R1.EntityWitherSkull;
-import net.minecraft.server.v1_7_R1.World;
-
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_7_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_7_R1.entity.CraftWitherSkull;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.WitherSkull;
 import org.bukkit.util.Vector;
 
-import de.ase34.flyingblocksapi.util.SpawnHelper;
+import de.ase34.flyingblocksapi.natives.api.NativeFlyingBlockHandler;
+import de.ase34.flyingblocksapi.natives.api.NativesAPI;
 
 /**
  * Handles the entities required for making a flying block.
@@ -44,17 +39,17 @@ public abstract class FlyingBlock {
      */
     public static int UPDATE_INTERVAL = 2;
 
-    private EntityWitherSkull entity;
+    protected final Material material;
+    protected final byte materialData;
+    protected final int trackerUpdateInterval;
+    protected final double heightOffset;
+    protected final int horseAge;
 
-    private final Material material;
-    private final byte materialData;
-    private final int trackerUpdateInterval;
-    private final double heightOffset;
-    private final int horseAge;
+    protected NativeFlyingBlockHandler nativeHander;
 
     /**
-     * Convenience constructor, uses {@link FlyingBlock#FlyingBlock(Material, byte, int, double, int)} with
-     * {@link FlyingBlock#AGE} as age parameter, {@link FlyingBlock#OFFSET} as offset parameter and
+     * Convenience constructor, uses {@link FlyingBlock#FlyingBlock(Material, byte, int, double, int)}
+     * with {@link FlyingBlock#AGE} as age parameter, {@link FlyingBlock#OFFSET} as offset parameter and
      * {@link FlyingBlock#UPDATE_INTERVAL} as update interval parameter.
      * 
      * @param material
@@ -67,8 +62,8 @@ public abstract class FlyingBlock {
     }
 
     /**
-     * Convenience constructor, uses {@link FlyingBlock#FlyingBlock(Material, byte, int, double, int)} with
-     * {@link FlyingBlock#AGE} as age parameter and {@link FlyingBlock#OFFSET} as offset parameter.
+     * Convenience constructor, uses {@link FlyingBlock#FlyingBlock(Material, byte, int, double, int)}
+     * with {@link FlyingBlock#AGE} as age parameter and {@link FlyingBlock#OFFSET} as offset parameter.
      * 
      * @param material
      *            The material
@@ -94,6 +89,9 @@ public abstract class FlyingBlock {
      *            The height offset of the skull
      * @param horseAge
      *            The age of the horse
+     * 
+     * @throws IllegalStateException
+     *             Thrown if the singleton of {@link NativesAPI} was not set yet.
      */
     public FlyingBlock(Material material, byte materialData, int trackerUpdateInterval,
             double heightOffset, int horseAge) {
@@ -102,37 +100,33 @@ public abstract class FlyingBlock {
         this.trackerUpdateInterval = trackerUpdateInterval;
         this.heightOffset = heightOffset;
         this.horseAge = horseAge;
+
+        if (NativesAPI.getSingleton() == null) {
+            throw new IllegalStateException("The singleton of NativesAPI was not set!");
+        }
+        this.nativeHander = NativesAPI.getSingleton().createFlyingBlockHandler(this);
     }
 
     /**
-     * Creates and spawns this {@link FlyingBlock} at the specified position. The height offset will be automatically
-     * applied so that the center of the falling block appears at the given position. If {@link #spawn(Location)} was
-     * already called, this methods first invokes {@link #remove()}.
+     * Creates and spawns this {@link FlyingBlock} at the specified position. The height offset will be
+     * automatically applied so that the center of the falling block appears at the given position. If
+     * {@link #spawn(Location)} was already called, this methods first invokes {@link #remove()}.
      * 
      * @param location
      *            The location to spawn the entity at
      */
     public void spawn(Location location) {
-        if (entity != null && entity.isAlive()) {
-            remove();
-        }
-
-        entity = SpawnHelper.spawn(this, location);
+        nativeHander.spawnFlyingBlock(location);
     }
 
     /**
-     * This method gets called every tick and can be used to modify location and motion of this {@link FlyingBlock}.
-     * Please note these special cases:
+     * This method gets called every tick and can be used to modify location and motion of this
+     * {@link FlyingBlock}. Please note these special cases:
      * 
      * <ul>
-     * <li>In order to change the motion/velocity/direction, please use
-     * {@link Entity#setVelocity(org.bukkit.util.Vector)} if you are working with (Craft)Bukkit entities (
-     * {@link #getBukkitEntity()}), or modify the public fields <code>motX</code>, <code>motY</code> and
-     * <code>motZ</code> of {@link #getNMSEntity()}.</li>
+     * <li>In order to change the motion/velocity/direction, please use {@link #setVelocity(org.bukkit.util.Vector)}.</li>
      * <li>
-     * In order to change the location, please use {@link #setLocation(Location)}, or if you are using
-     * {@link #getNMSEntity()}, either modify the public fields <code>locX</code>, <code>locY</code> and
-     * <code>locZ</code>, or use {@link net.minecraft.server.v1_7_R1.Entity#setPosition(double, double, double)}.</li>
+     * In order to change the location, please use {@link #setLocation(Location)}.</li>
      * </ul>
      */
     public abstract void onTick();
@@ -141,20 +135,13 @@ public abstract class FlyingBlock {
      * Removes all involved entites so that this {@link FlyingBlock} gets removed.
      */
     public void remove() {
-        if (entity == null) {
-            return;
-        }
-
-        entity.passenger.passenger.die();
-        entity.passenger.die();
-        entity.die();
-        entity = null;
+        nativeHander.removeEntites();
     }
 
     /**
      * <p>
-     * Sets the location of this {@link FlyingBlock} to the specified location. Please keep in mind that this sets the
-     * location of the wither skull, not the block itself. The block is located below the skull. (See
+     * Sets the location of this {@link FlyingBlock} to the specified location. Please keep in mind that this
+     * sets the location of the wither skull, not the block itself. The block is located below the skull. (See
      * {@link #getHeightOffset()}) If the world of the speicified location does not match that of the entity,
      * {@link #remove()} is invoked followed by {@link #spawn(Location)} with the specified location. In
      * {@link #onTick()}, this method needs to be used instead of <code>getBukkitEntity().teleport(Location)</code> as
@@ -174,18 +161,7 @@ public abstract class FlyingBlock {
      *             Thrown if the entity is dead
      */
     public void setLocation(Location location) {
-        if (entity == null || !entity.isAlive()) {
-            throw new UnsupportedOperationException("The entity was not spawned yet!");
-        }
-
-        World newWorld = ((CraftWorld) location.getWorld()).getHandle();
-        if (newWorld != entity.world) {
-            this.remove();
-            this.spawn(location);
-        } else {
-            entity.setLocation(location.getX(), location.getY(), location.getZ(),
-                    location.getYaw(), location.getPitch());
-        }
+        nativeHander.setFlyingBlockLocation(location);
     }
 
     /**
@@ -204,7 +180,8 @@ public abstract class FlyingBlock {
     }
 
     /**
-     * Sets the velocity of this {@link FlyingBlock}. Convenience method analogous to {@link #setLocation(Location)}.
+     * Sets the velocity of this {@link FlyingBlock}. Convenience method analogous to
+     * {@link #setLocation(Location)}.
      * 
      * @param velocity
      *            The
@@ -214,31 +191,12 @@ public abstract class FlyingBlock {
     }
 
     /**
-     * Gets the underlying <code>net.minecraft.server</code> entity. May be null if not spawned yet by
-     * {@link #spawn(Location)}.
-     * 
-     * @return The NMS entity
-     */
-    public EntityWitherSkull getNMSEntity() {
-        return entity;
-    }
-
-    /**
-     * Gets the underlying entity as CraftBukkit entity. May be null if not spawned yet by {@link #spawn(Location)}.
-     * 
-     * @return The CraftBukkit entity
-     */
-    public CraftWitherSkull getCraftBukkitEntity() {
-        return (CraftWitherSkull) entity.getBukkitEntity();
-    }
-
-    /**
      * Gets the underlying entity as Bukkit entity. May be null if not spawned yet by {@link #spawn(Location)}.
      * 
      * @return The Bukkit entity
      */
     public WitherSkull getBukkitEntity() {
-        return getCraftBukkitEntity();
+        return nativeHander.getBukkitEntity();
     }
 
     public Material getMaterial() {

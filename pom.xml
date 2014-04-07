@@ -1,12 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.ase34</groupId>
-  <artifactId>flyingblocksapi</artifactId>
-  <version>0.1.4-SNAPSHOT</version>
+  <artifactId>flyingblocksapi-parent</artifactId>
+  <version>parent</version>
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  
+  <packaging>pom</packaging>
+  <modules>
+    <module>api</module>
+    <module>natives-v1_7_R1</module>
+    <module>plugin</module>
+  </modules>
   
   <repositories>
     <repository>
@@ -15,52 +22,4 @@
     </repository>
   </repositories>
   
-  <dependencies>
-    <dependency>
-      <groupId>org.bukkit</groupId>
-      <artifactId>bukkit</artifactId>
-      <version>1.7.2-R0.3</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.bukkit</groupId>
-      <artifactId>craftbukkit</artifactId>
-      <version>1.7.2-R0.3</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
-  
-  <build>
-    <defaultGoal>clean package</defaultGoal>
-    <finalName>${project.name}-${project.version}</finalName>
-    <sourceDirectory>${basedir}/src/main/java/</sourceDirectory>
-    <resources>
-      <resource>
-        <filtering>true</filtering>
-        <directory>${basedir}/src/main/resources/</directory>
-      </resource>
-      <resource>
-        <directory>${basedir}/src/main/java/</directory>
-      </resource>
-      <resource>
-        <directory>${basedir}</directory>
-        <includes>
-          <include>LICENSE</include>
-        </includes>
-      </resource>
-    </resources>
-    
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.0.2</version>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-    
 </project>
