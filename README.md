@@ -113,7 +113,7 @@ The developer has to take certain precautions when using this plugin:
   * When the last player leaves a world in the now empty world.
   
   To make them persistent, the developer needs to save the blocks (in a file for example) and to respawn them during the opposite events of the above-mentioned (`onEnable()`, WorldLoadEvent, PlayerJoinEvent). 
-* The parameter `trackerUpdateInterval` specifies how often the NMS entity tracker sends packets to update the location of the flying block per tick. See [EntityTrackerEntry.java](https://github.com/SpigotMC/mc-dev/blob/master/net/minecraft/server/EntityTrackerEntry.java) of the mc-dev repository. (Important lines: [99](https://github.com/SpigotMC/mc-dev/blob/master/net/minecraft/server/EntityTrackerEntry.java?source=c#L98)).
+* The parameter `trackerUpdateInterval` specifies how often the NMS entity tracker sends packets to update the location of the flying block per tick. See [EntityTrackerEntry.java](https://github.com/SpigotMC/mc-dev/blob/master/net/minecraft/server/EntityTrackerEntry.java) of the mc-dev repository. (Important lines: [99](https://github.com/SpigotMC/mc-dev/blob/master/net/minecraft/server/EntityTrackerEntry.java?source=c#L98), [116-129](https://github.com/SpigotMC/mc-dev/blob/master/net/minecraft/server/EntityTrackerEntry.java?source=c#L116-L129)).
   * It does not influence the smoothness of flying blocks with velocities applied. Packets about velocity updates are broadcasted immediately after the onTick() method. However, the tracker still broadcasts packets about the location in the specified interval to prevent desyncs.
   * When teleporting, the updating packet will be sent when the entity tracker triggers. (So, the maximum delay is the value of the tracker-update-interval)
   
@@ -123,7 +123,7 @@ Credits & Special Thanks
 --------------------------
 
 * [Asdjke](http://www.youtube.com/user/AsdjkeAndBro) - Underlying technique (<http://www.youtube.com/watch?v=q1B19JvX5TE>) Thanks!
-* [Jogy34](https://forums.bukkit.org/members/jogy34.90565555/) - code to spawn custom entites (<https://forums.bukkit.org/threads/tutorial-1-7-creating-a-custom-entity.212849/>) Thanks!
+* [Jogy34](https://forums.bukkit.org/members/jogy34.90565555/) - Code to spawn custom entites (<https://forums.bukkit.org/threads/tutorial-1-7-creating-a-custom-entity.212849/>) Thanks!
 * [mbaxter](https://forums.bukkit.org/members/mbaxter.766/) - Maven model for compatibility with different CraftBukkit/Minecraft versions (https://forums.bukkit.org/threads/support-multiple-minecraft-versions-with-abstraction-maven.115810/) Thanks!
 * [ase34](https://forums.bukkit.org/members/ase34.90684193/) - Plugin design and core development
 
