@@ -12,61 +12,31 @@
  * <http://www.gnu.org/licenses/>.
  */
 /*
- * This code is pulled from Jogy34 (https://forums.bukkit.org/threads/tutorial-1-7-creating-a-custom-entity.212849/)
+ * This code is pulled from Jacek (http://forums.bukkit.org/threads/tutorial-how-to-customize-the-behaviour-of-a-mob-or-entity.54547/)
  */
 package de.ase34.flyingblocksapi.natives.v1_6_R3.util;
 
-import java.lang.reflect.Field;
-import java.util.Map;
+import java.lang.reflect.Method;
 
 public class EntityRegistrator {
-
-    protected static Field mapStringToClassField, mapClassToStringField, mapClassToIdField,
-            mapStringToIdField, mapIdToClassField;
-
+    
+    private static Method registerMethod;
+    
     static {
         try {
-            mapStringToClassField = net.minecraft.server.v1_6_R3.EntityTypes.class
-                    .getDeclaredField("c");
-            mapClassToStringField = net.minecraft.server.v1_6_R3.EntityTypes.class
-                    .getDeclaredField("d");
-            mapIdToClassField = net.minecraft.server.v1_6_R3.EntityTypes.class.getDeclaredField("e");
-            mapClassToIdField = net.minecraft.server.v1_6_R3.EntityTypes.class
-                    .getDeclaredField("f");
-
-            mapStringToClassField.setAccessible(true);
-            mapClassToStringField.setAccessible(true);
-            mapIdToClassField.setAccessible(true);
-            mapClassToIdField.setAccessible(true);
+            registerMethod = net.minecraft.server.v1_6_R3.EntityTypes.class.getDeclaredMethod("a", new Class<?>[]{Class.class, String.class, int.class});
+            registerMethod.setAccessible(true);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings("rawtypes")
     public static void registerCustomEntity(Class entityClass, String name, int id) {
-        if (mapStringToClassField == null || mapStringToIdField == null
-                || mapClassToStringField == null || mapClassToIdField == null) {
-            return;
-        } else {
-            try {
-                Map mapStringToClass = (Map) mapStringToClassField.get(null);
-                Map mapStringToId = (Map) mapStringToIdField.get(null);
-                Map mapClasstoString = (Map) mapClassToStringField.get(null);
-                Map mapClassToId = (Map) mapClassToIdField.get(null);
-
-                mapStringToClass.put(name, entityClass);
-                mapStringToId.put(name, Integer.valueOf(id));
-                mapClasstoString.put(entityClass, name);
-                mapClassToId.put(entityClass, Integer.valueOf(id));
-
-                mapStringToClassField.set(null, mapStringToClass);
-                mapStringToIdField.set(null, mapStringToId);
-                mapClassToStringField.set(null, mapClasstoString);
-                mapClassToIdField.set(null, mapClassToId);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            registerMethod.invoke(null, entityClass, name, id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
