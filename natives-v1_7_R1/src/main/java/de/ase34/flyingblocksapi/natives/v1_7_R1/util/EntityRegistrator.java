@@ -42,7 +42,7 @@ public class EntityRegistrator {
             mapClassToIdField.setAccessible(true);
             mapStringToIdField.setAccessible(true);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
