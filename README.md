@@ -123,8 +123,8 @@ Credits & Special Thanks
 --------------------------
 
 * [Asdjke](http://www.youtube.com/user/AsdjkeAndBro) - Underlying technique (<http://www.youtube.com/watch?v=q1B19JvX5TE>) Thanks!
-* [Jogy34](https://forums.bukkit.org/members/jogy34.90565555/) - Code to spawn custom entites (<https://forums.bukkit.org/threads/tutorial-1-7-creating-a-custom-entity.212849/>) until v0.1.3 Thanks!
-* [Jacek]() - Code to spawn custom entites (http://forums.bukkit.org/threads/tutorial-how-to-customize-the-behaviour-of-a-mob-or-entity.54547/) Thanks!
+* [Jogy34](https://forums.bukkit.org/members/jogy34.90565555/) - Code to spawn custom entites (<https://forums.bukkit.org/threads/tutorial-1-7-creating-a-custom-entity.212849/>) Thanks!
+* [Jacek](http://forums.bukkit.org/members/jacek.59556/) - Code to spawn custom entites (http://forums.bukkit.org/threads/tutorial-how-to-customize-the-behaviour-of-a-mob-or-entity.54547/) Thanks!
 * [mbaxter](https://forums.bukkit.org/members/mbaxter.766/) - Maven model for compatibility with different CraftBukkit/Minecraft versions (https://forums.bukkit.org/threads/support-multiple-minecraft-versions-with-abstraction-maven.115810/) Thanks!
 * [ase34](https://forums.bukkit.org/members/ase34.90684193/) - Plugin design and core development
 
