@@ -1,0 +1,6 @@
+language: java
+after_success: if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then ./deploy.sh; fi
+
+env:
+    global:
+        secure: "mMN5srlwJMrum69fG/l0ts2ya9e6vupRusOLnjOssy1c0w0IqSJSv5E73QANZCgPfFJ2IsD+FhgmMXiEQ6637Bz8+XqIhwPjE3YzleAEsvgLSfdHdKcJpW0zEO/jILd5f1gM79zJFyJVHdgcpq0s7/96OfsZia1I01H2Z/hifaM="
