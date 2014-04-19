@@ -132,7 +132,7 @@ public abstract class FlyingBlock {
     public abstract void onTick();
 
     /**
-     * Removes all involved entites so that this {@link FlyingBlock} gets removed.
+     * Removes all involved entities so that this {@link FlyingBlock} gets removed.
      */
     public void remove() {
         nativeHander.removeEntites();

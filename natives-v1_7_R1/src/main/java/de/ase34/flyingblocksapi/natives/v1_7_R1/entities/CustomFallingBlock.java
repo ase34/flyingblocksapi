@@ -11,7 +11,7 @@
  * You should have received a copy of the GNU General Public License along with this program. If not, see
  * <http://www.gnu.org/licenses/>.
  */
-package de.ase34.flyingblocksapi.natives.v1_7_R1.entites;
+package de.ase34.flyingblocksapi.natives.v1_7_R1.entities;
 
 import net.minecraft.server.v1_7_R1.Entity;
 import net.minecraft.server.v1_7_R1.EntityFallingBlock;

@@ -22,9 +22,9 @@ import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_6_R3.CraftWorld;
 
 import de.ase34.flyingblocksapi.FlyingBlock;
-import de.ase34.flyingblocksapi.natives.v1_6_R3.entites.CustomFallingBlock;
-import de.ase34.flyingblocksapi.natives.v1_6_R3.entites.CustomHorse;
-import de.ase34.flyingblocksapi.natives.v1_6_R3.entites.CustomWitherSkull;
+import de.ase34.flyingblocksapi.natives.v1_6_R3.entities.CustomFallingBlock;
+import de.ase34.flyingblocksapi.natives.v1_6_R3.entities.CustomHorse;
+import de.ase34.flyingblocksapi.natives.v1_6_R3.entities.CustomWitherSkull;
 
 public class SpawnHelper {
 

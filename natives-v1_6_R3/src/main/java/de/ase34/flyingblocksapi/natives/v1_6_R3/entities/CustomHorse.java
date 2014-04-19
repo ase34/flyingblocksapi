@@ -11,7 +11,7 @@
  * You should have received a copy of the GNU General Public License along with this program. If not, see
  * <http://www.gnu.org/licenses/>.
  */
-package de.ase34.flyingblocksapi.natives.v1_6_R3.entites;
+package de.ase34.flyingblocksapi.natives.v1_6_R3.entities;
 
 import net.minecraft.server.v1_6_R3.EntityHorse;
 import net.minecraft.server.v1_6_R3.World;

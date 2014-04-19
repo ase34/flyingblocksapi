@@ -8,9 +8,9 @@ import org.bukkit.craftbukkit.v1_7_R1.CraftWorld;
 import org.bukkit.entity.Entity;
 
 import de.ase34.flyingblocksapi.FlyingBlock;
-import de.ase34.flyingblocksapi.natives.v1_7_R1.entites.CustomFallingBlock;
-import de.ase34.flyingblocksapi.natives.v1_7_R1.entites.CustomHorse;
-import de.ase34.flyingblocksapi.natives.v1_7_R1.entites.CustomWitherSkull;
+import de.ase34.flyingblocksapi.natives.v1_7_R1.entities.CustomFallingBlock;
+import de.ase34.flyingblocksapi.natives.v1_7_R1.entities.CustomHorse;
+import de.ase34.flyingblocksapi.natives.v1_7_R1.entities.CustomWitherSkull;
 import de.ase34.flyingblocksapi.natives.v1_7_R1.util.EntityRegistrator;
 
 public class NativesAPI extends de.ase34.flyingblocksapi.natives.api.NativesAPI {

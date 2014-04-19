@@ -11,13 +11,13 @@
  * You should have received a copy of the GNU General Public License along with this program. If not, see
  * <http://www.gnu.org/licenses/>.
  */
-package de.ase34.flyingblocksapi.natives.v1_7_R1.entites;
+package de.ase34.flyingblocksapi.natives.v1_6_R3.entities;
 
 import de.ase34.flyingblocksapi.FlyingBlock;
-import net.minecraft.server.v1_7_R1.EntityTracker;
-import net.minecraft.server.v1_7_R1.EntityWitherSkull;
-import net.minecraft.server.v1_7_R1.World;
-import net.minecraft.server.v1_7_R1.WorldServer;
+import net.minecraft.server.v1_6_R3.EntityTracker;
+import net.minecraft.server.v1_6_R3.EntityWitherSkull;
+import net.minecraft.server.v1_6_R3.World;
+import net.minecraft.server.v1_6_R3.WorldServer;
 
 public class CustomWitherSkull extends EntityWitherSkull {
 
@@ -31,7 +31,7 @@ public class CustomWitherSkull extends EntityWitherSkull {
     }
 
     @Override
-    public void h() {
+    public void l_() {
         // tick entity
         flyingBlock.onTick();
 
