@@ -50,7 +50,8 @@ public class EntityRegistrator {
     public static void registerCustomEntity(Class entityClass, String name, int id) {
         if (mapStringToClassField == null || mapStringToIdField == null
                 || mapClassToStringField == null || mapClassToIdField == null) {
-            return;
+            throw new RuntimeException(new IllegalStateException(
+                    "The required variables are not set!"));
         } else {
             try {
                 Map mapStringToClass = (Map) mapStringToClassField.get(null);
