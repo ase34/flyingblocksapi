@@ -36,11 +36,10 @@ public class FlyingBlocksPlugin extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         createNativesAPI();
-        
+
         nativesAPI.initialize();
         NativesAPI.setSingleton(nativesAPI);
-        
-        
+
         getCommand("flyingblocks-removeall").setExecutor(new RemoveAllCommandExecutor(this));
         getCommand("flyingblocks-examples").setExecutor(new ExamplesCommandExecutor());
 
@@ -50,10 +49,11 @@ public class FlyingBlocksPlugin extends JavaPlugin implements Listener {
     private void createNativesAPI() {
         String packageName = this.getServer().getClass().getPackage().getName();
         String version = packageName.substring(packageName.lastIndexOf('.') + 1);
-        
+
         try {
-            final Class<?> clazz = Class.forName("de.ase34.flyingblocksapi.natives." + version + ".NativesAPI");
-            if (NativesAPI.class.isAssignableFrom(clazz)) { 
+            final Class<?> clazz = Class.forName("de.ase34.flyingblocksapi.natives." + version
+                    + ".NativesAPI");
+            if (NativesAPI.class.isAssignableFrom(clazz)) {
                 this.nativesAPI = (NativesAPI) clazz.getConstructor().newInstance();
             }
         } catch (final Exception e) {
@@ -85,7 +85,7 @@ public class FlyingBlocksPlugin extends JavaPlugin implements Listener {
     public List<Entity> removeFlyingBlocks(World world) {
         return nativesAPI.removeFlyingBlocks(world);
     }
-    
+
     public NativesAPI getNativesAPI() {
         return nativesAPI;
     }
