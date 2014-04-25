@@ -41,6 +41,13 @@
       <optional>true</optional>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>de.ase34</groupId>
+      <artifactId>flyingblocksapi-natives-v1_7_R3</artifactId>
+      <version>v1_7_R3</version>
+      <optional>true</optional>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
   
   <build>
