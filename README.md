@@ -16,6 +16,15 @@ flyingblocksapi
 * BukkitDev Project Page - http://dev.bukkit.org/bukkit-plugins/flyingblocksapi/
 * Javadocs - http://ase34.github.io/flyingblocksapi/javadocs
 
+### Supported Versions
+
+As this plugin uses submodules, you can use the same plugin JAR for different Minecraft versions despite the frequent relocations of the NMS/OBC classes. Currently, this includes the versions
+
+* 1_6_R3 (1.6.4)
+* 1_7_R1 (1.7.0 - 1.7.2)
+* 1_7_R2 (1.7.5)
+* 1_7_R3 (1.7.8, 1.7.9)
+
 Overview
 --------
 
