@@ -127,6 +127,7 @@ The developer has to take certain precautions when using this plugin:
   * When teleporting, the updating packet will be sent when the entity tracker triggers. (So, the maximum delay is the value of the tracker-update-interval)
   
   Thus, choose a high tracker-update-interval (5-10) if your movement only relies on velocities, and choose a low one (1-2) if your movement heavily relies on fast location updates. 
+* As the technique requires the *Horse* entities, the developer has to check if animal entities won't be instantly killed because of the `spawn-animals` flag set to *false* in the *server.properties* file.
 
 Credits & Special Thanks
 --------------------------
