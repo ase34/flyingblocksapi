@@ -1,0 +1,6 @@
+{
+  "title": "flyingblocksapi",
+  "tags": ["dev"],
+  "homepage": "https://github.com/ase34/flyingblocksapi",
+  "description": "API for developers to create flying and moving blocks in Minecraft using Bukkit."
+}
