@@ -26,6 +26,11 @@ public class CustomFallingBlock extends EntityFallingBlock {
         this.forcedVehicle = forcedVehicle;
     }
 
+    public CustomFallingBlock(World world) {
+        super(world);
+        this.forcedVehicle = null;
+    }
+
     @Override
     public void h() {
         // set vehicle

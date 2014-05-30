@@ -30,10 +30,18 @@ public class CustomWitherSkull extends EntityWitherSkull {
         this.flyingBlock = flyingBlock;
     }
 
+    public CustomWitherSkull(World world) {
+        super(world);
+        this.flyingBlock = null;
+        initial = false;
+    }
+
     @Override
     public void l_() {
         // tick entity
-        flyingBlock.onTick();
+        if (flyingBlock != null) {
+            flyingBlock.onTick();
+        }
 
         // direction is acceleration
         this.motX += this.dirX;
