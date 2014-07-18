@@ -1,8 +1,0 @@
-# Eclipse stuff
-/.classpath
-/.project
-/.settings
-
-# Maven
-/build.xml
-/target
