@@ -5,7 +5,7 @@ git config --global user.email "asehrm34@gmail.com"
 git config --global user.name "ase34"
 
 # clone ase34.github.io
-git clone https://${OAUTH_TOKEN}@github.com/ase34/ase34.github.io.git target/github-site
+git clone --depth 1 --quiet https://${OAUTH_TOKEN}@github.com/ase34/ase34.github.io.git target/github-site
 
 # deploy to Maven repository
 mvn deploy -DaltDeploymentRepository=id::default::file:target/github-site/maven-repo
@@ -17,7 +17,7 @@ cd ..
 git add *
 git status
 git commit -a -m "Added files for flyingblocks (commit ${TRAVIS_COMMIT})"
-git push
+git push --quiet
 cd ../..
 
 # retrieve Maven version number and generate javadoc
@@ -26,7 +26,7 @@ echo "PROJECT_VERSION = ${PROJECT_VERSION}"
 mvn javadoc:aggregate
 
 # clone gh-pages branch, copy files and generate index
-git clone --branch gh-pages https://${OAUTH_TOKEN}@github.com/ase34/flyingblocksapi.git target/gh-pages
+git clone --branch gh-pages --depth 1 --quiet https://${OAUTH_TOKEN}@github.com/ase34/flyingblocksapi.git target/gh-pages
 cd target/gh-pages
 
 rm -r javadocs/latest
@@ -44,5 +44,5 @@ rm index.html.temp
 git add *
 git status
 git commit -a -m "Added javadoc for commit ${TRAVIS_COMMIT}"
-git push
+git push --quiet
 git checkout master
