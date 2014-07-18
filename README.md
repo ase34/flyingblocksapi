@@ -105,10 +105,10 @@ To spawn the prepared flying block, just construct a new object of a FlyingBlock
 
 ### Examples
 
-Sample codes are available in the [`de.ase34.flyingblocksapi.commands.examples` package](tree/master/src/main/java/de/ase34/flyingblocksapi/commands/examples). Many of the examples are using anonymous or nested classes. Here's a small selection:
+Sample codes are available in the [`de.ase34.flyingblocksapi.commands.examples` package](plugin/src/main/java/de/ase34/flyingblocksapi/commands/examples). Many of the examples are using anonymous or nested classes. Here's a small selection:
 
-* [RisingBlockCommandExecutor.java](src/main/java/de/ase34/flyingblocksapi/commands/examples/RisingBlockCommandExecutor.java) - Simple example that spawns a flying block which rises wiht constant velocity in the sky
-* [SineWaveBlockCommandExecutor.java](src/main/java/de/ase34/flyingblocksapi/commands/examples/SineWaveBlockCommandExecutor.java) - Complex example code for a flying block moving up and down in a sine-wave-style
+* [RisingBlockCommandExecutor.java](plugin/src/main/java/de/ase34/flyingblocksapi/commands/examples/RisingBlockCommandExecutor.java) - Simple example that spawns a flying block which rises wiht constant velocity in the sky
+* [SineWaveBlockCommandExecutor.java](plugin/src/main/java/de/ase34/flyingblocksapi/commands/examples/SineWaveBlockCommandExecutor.java) - Complex example code for a flying block moving up and down in a sine-wave-style
 
 To see these examples in-game, use the `/flyingblocks-examples` command. 
 
