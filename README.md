@@ -24,6 +24,7 @@ As this plugin uses submodules, you can use the same plugin JAR for different Mi
 * 1_7_R1 (1.7.0 - 1.7.2)
 * 1_7_R2 (1.7.5)
 * 1_7_R3 (1.7.8, 1.7.9)
+* 1_7_R4 (1.7.10)
 
 Overview
 --------
