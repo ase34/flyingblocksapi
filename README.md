@@ -50,6 +50,14 @@ Building
 
 This plugin uses [Maven](http://maven.apache.org/) as build tool. Just [download](https://github.com/ase34/flyingblocksapi/archive/master.zip) this repositotry's zipfile or clone it via Git using `git clone http://github.com/ase34/flyingblocksapi.git`, then invoke `mvn clean package` to build a new JAR file.
 
+### Important Notice concerning the DCMA takedown
+
+Since the official Maven repos for Bukkit and CraftBukkit went down due to the DCMA takedown notice, please compile and install Bukkit and CraftBukkit by yourself into your local Maven repository. Xephi's forks of [Bukkit](https://github.com/Xephi/Bukkit) and [Craftbukkit](https://github.com/Xephi/CraftBukkit) are equal with the (Craft-)Bukkit repos as befor the takedown.
+
+If you don't need support for *all* of the supported CraftBukkit versions, you can comment out the not needed modules out of `pom.xml` and  `plugin/pom.xml` so you don't need to install the older CraftBukkit versions for compiling. 
+
+Example building instructions with support for only v1_7_R4 (MC 1.7.10) with patch: [gist](https://gist.github.com/ase34/ad09a0b2b38c5321c4cf)
+
 Underlying Technique
 --------------------
 
